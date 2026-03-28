@@ -6,23 +6,41 @@
     <title>RPLabs — Engineered for Scale. Wired for Intelligence.</title>
 
     <!-- Primary SEO -->
-    <meta name="description" content="RPLabs is an IT company specialized in Web Application Development, AWS Cloud Architecture, and AI-powered solutions. We build scalable, intelligent software for modern businesses." />
-    <meta name="keywords" content="RPLabs, IT solutions, web development, software development, AWS cloud, artificial intelligence, AI applications, cloud architecture, rplabs.net" />
+    <meta
+      name="description"
+      content="RPLabs is an IT company specialized in Web Application Development, AWS Cloud Architecture, and AI-powered solutions. We build scalable, intelligent software for modern businesses."
+    />
+    <meta
+      name="keywords"
+      content="RPLabs, IT solutions, web development, software development, AWS cloud, artificial intelligence, AI applications, cloud architecture, rplabs.net"
+    />
     <meta name="author" content="RPLabs" />
     <link rel="canonical" href="https://rplabs.net/" />
 
     <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://rplabs.net/" />
-    <meta property="og:title" content="RPLabs — Engineered for Scale. Wired for Intelligence." />
-    <meta property="og:description" content="IT solutions, Web App development, AWS Cloud architecture, and AI-powered applications. Built by RPLabs." />
+    <meta
+      property="og:title"
+      content="RPLabs — Engineered for Scale. Wired for Intelligence."
+    />
+    <meta
+      property="og:description"
+      content="IT solutions, Web App development, AWS Cloud architecture, and AI-powered applications. Built by RPLabs."
+    />
     <meta property="og:site_name" content="RPLabs" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="https://rplabs.net/" />
-    <meta name="twitter:title" content="RPLabs — Engineered for Scale. Wired for Intelligence." />
-    <meta name="twitter:description" content="IT solutions, Web App development, AWS Cloud architecture, and AI-powered applications. Built by RPLabs." />
+    <meta
+      name="twitter:title"
+      content="RPLabs — Engineered for Scale. Wired for Intelligence."
+    />
+    <meta
+      name="twitter:description"
+      content="IT solutions, Web App development, AWS Cloud architecture, and AI-powered applications. Built by RPLabs."
+    />
     <style>
       *,
       *::before,
@@ -30,6 +48,59 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+      }
+
+      @keyframes dotDrift {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 28px 28px;
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes glowPulse {
+        0%,
+        100% {
+          text-shadow:
+            0 0 6px rgba(0, 220, 80, 0.4),
+            0 0 18px rgba(0, 180, 60, 0.15);
+        }
+        50% {
+          text-shadow:
+            0 0 12px rgba(0, 220, 80, 0.65),
+            0 0 32px rgba(0, 180, 60, 0.3);
+        }
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
       }
 
       html,
@@ -42,6 +113,7 @@
           transparent 1px
         );
         background-size: 28px 28px;
+        animation: dotDrift 6s linear infinite;
       }
 
       .content {
@@ -60,12 +132,13 @@
         font-size: clamp(10px, 2vw, 26px);
         line-height: 1.2;
         color: #e8e8e8;
-        text-shadow:
-          0 0 6px rgba(0, 220, 80, 0.4),
-          0 0 18px rgba(0, 180, 60, 0.15);
         white-space: pre;
         text-align: left;
         user-select: none;
+        opacity: 0;
+        animation:
+          fadeUp 1s ease forwards,
+          glowPulse 4s ease-in-out 1.2s infinite;
       }
 
       .tagline {
@@ -75,6 +148,15 @@
         letter-spacing: 0.18em;
         text-transform: lowercase;
         user-select: none;
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 0.55em;
+        height: 1em;
+        background: #2e6640;
+        vertical-align: text-bottom;
+        animation: blink 1s step-start infinite;
       }
 
       .offerings {
@@ -90,6 +172,7 @@
         text-transform: uppercase;
         user-select: none;
         margin-top: 0.4rem;
+        opacity: 0;
       }
     </style>
   </head>
@@ -103,10 +186,31 @@
 ██║  ██║██║     ███████╗██║  ██║██████╔╝███████║
 ╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝</pre
       >
-      <p class="tagline">engineered for scale. wired for intelligence.</p>
+      <p class="tagline">
+        <span class="tagline-text"></span><span class="cursor"></span>
+      </p>
       <p class="offerings">
         IT Solutions &bull; Software Development &bull; Artificial Intelligence
       </p>
     </div>
+    <script>
+      const text = "engineered for scale. wired for intelligence.";
+      const el = document.querySelector(".tagline-text");
+      const offerings = document.querySelector(".offerings");
+      let i = 0;
+      // Start typing after ASCII art fades in
+      setTimeout(function type() {
+        el.textContent = text.slice(0, ++i);
+        if (i < text.length) setTimeout(type, 22);
+        else {
+          // Hide cursor after a pause, then fade in offerings
+          setTimeout(() => {
+            document.querySelector(".cursor").style.display = "none";
+            offerings.style.transition = "opacity 1s ease";
+            offerings.style.opacity = "1";
+          }, 800);
+        }
+      }, 1000);
+    </script>
   </body>
 </html>
