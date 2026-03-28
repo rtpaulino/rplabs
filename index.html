@@ -16,35 +16,68 @@
       html,
       body {
         height: 100%;
-        background: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         overflow: hidden;
+        background-color: #000;
+        background-image: radial-gradient(rgba(0, 200, 80, 0.12) 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
+
+      .content {
+        position: absolute;
+        top: 33%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6rem;
       }
 
       pre {
-        font-family: monospace;
-        font-size: clamp(6px, 1.4vw, 18px);
+        font-family: 'Courier New', Courier, monospace;
+        font-size: clamp(10px, 2vw, 26px);
         line-height: 1.2;
-        color: #e0e0e0;
+        color: #e8e8e8;
         text-shadow:
-          0 0 8px rgba(255, 255, 255, 0.6),
-          0 0 20px rgba(180, 180, 255, 0.3);
+          0 0 6px rgba(0, 220, 80, 0.4),
+          0 0 18px rgba(0, 180, 60, 0.15);
         white-space: pre;
         text-align: left;
         user-select: none;
       }
+
+      .tagline {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: clamp(12px, 1.2vw, 18px);
+        color: #2e6640;
+        letter-spacing: 0.18em;
+        text-transform: lowercase;
+        user-select: none;
+      }
+
+      .offerings {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        font-size: clamp(10px, 0.9vw, 14px);
+        font-weight: 300;
+        color: #4a9960;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        user-select: none;
+        margin-top: 0.4rem;
+      }
     </style>
   </head>
   <body>
-    <pre>
+    <div class="content">
+      <pre>
 ██████╗ ██████╗ ██╗      █████╗ ██████╗ ███████╗
 ██╔══██╗██╔══██╗██║     ██╔══██╗██╔══██╗██╔════╝
 ██████╔╝██████╔╝██║     ███████║██████╔╝███████╗
 ██╔══██╗██╔═══╝ ██║     ██╔══██║██╔══██╗╚════██║
 ██║  ██║██║     ███████╗██║  ██║██████╔╝███████║
-╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝</pre
-    >
+╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝</pre>
+      <p class="tagline">engineered for scale. wired for intelligence.</p>
+      <p class="offerings">IT Solutions &bull; Software Development &bull; Artificial Intelligence</p>
+    </div>
   </body>
 </html>
